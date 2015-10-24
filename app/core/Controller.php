@@ -3,6 +3,14 @@
 
 class Controller
 {
+    /**
+     * these could be one and the same method but I want to distinguish them
+     *
+     * @param string $nameSpace
+     * @param $model
+     * @param string $injection
+     * @return mixed
+     */
     protected function model($nameSpace = '', $model, $injection = '')
     {
         require_once '../app/model/'. $model .'.php';

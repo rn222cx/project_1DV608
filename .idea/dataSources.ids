@@ -11,7 +11,8 @@
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="title" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
       <column name="game" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="gameType" sqlType="ENUM" precision="5" scale="0" nullable="false" jdbcType="1"/>
+      <column name="img" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="gameType" sqlType="ENUM" precision="7" scale="0" nullable="false" jdbcType="1"/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="users" schema="" catalog="GameTube" type="TABLE">

@@ -1,9 +1,6 @@
 <?php
 
 require_once('../app/exceptions/FileSizeException.php');
-require_once('../app/exceptions/FileExtensionException.php');
-
-require_once('../app/model/Game.php');
 
 class AddGameController extends Controller
 {

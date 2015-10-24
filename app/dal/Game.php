@@ -14,25 +14,36 @@ class Game
         $this->db = new \Db();
     }
 
+    /**
+     * Add new games to db
+     *
+     * @param \model\Game $credential
+     * @param \model\IListener $listener
+     * @return bool
+     */
     public function add(\model\Game $credential, \model\IListener $listener)
     {
         try {
             $random = rand(0, pow(10, 5)) . '-'; // 5 digit random number to prefix game name
             $gameDirectory = "../public/games/"; // path to game directory
+            $imgDirectory = "../public/images/"; // path to image directory
 
-            $fileExtension = $credential->getFileExtension();
+
             $title = $credential->getTitle();
             $gameFile = $random . $credential->getGameFile()["name"];
-            $target_file = $gameDirectory . $gameFile;
+            $imgFile = $random . $credential->getImage()["name"];
+            $targetFile = $gameDirectory . $gameFile;
+            $targetImg = $imgDirectory . $imgFile;
 
-            move_uploaded_file($credential->getGameFile()["tmp_name"], $target_file);
+            move_uploaded_file($credential->getGameFile()["tmp_name"], $targetFile);
+            move_uploaded_file($credential->getImage()["tmp_name"], $targetImg);
 
             $records = $this->db;
 
-            $records->query('INSERT INTO game (title, game, gameType) VALUES (:title, :game, :gameType)');
+            $records->query('INSERT INTO game (title, game, img) VALUES (:title, :game, :img)');
             $records->bind(':title', $title);
             $records->bind(':game', $gameFile);
-            $records->bind(':gameType', $fileExtension);
+            $records->bind(':img', $imgFile);
             $records->execute();
 
             return true;
@@ -43,6 +54,15 @@ class Game
 
     }
 
+    public function addFiles()
+    {
+
+    }
+
+    /**
+     * @param GameList $gameList
+     * @return GameList
+     */
     public function getGames(GameList $gameList) {
 
         $this->gameList = $gameList;
@@ -55,7 +75,7 @@ class Game
         $rows = $records->resultset();
 
         foreach($rows as $row){
-            $game = new \model\Game($row['title'], $row['game'], $row['id']);
+            $game = new \model\Game($row['title'], $row['game'],  $row['img'], $row['id']);
             $this->gameList->add($game);
         }
 

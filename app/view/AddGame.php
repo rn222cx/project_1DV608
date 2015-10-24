@@ -10,6 +10,7 @@ class AddGame implements IListener
     private static $messageId = 'view\AddGame::Message';
     private static $title = 'view\AddGame::Title';
     private static $gameFile = 'view\AddGame::GameFile';
+    private static $image = 'view\AddGame::Image';
     private static $addGame = 'view\AddGame::Game';
 
     private static $sessionSaveMessage = 'view\AddGame::SessionSaveMessage';
@@ -27,10 +28,9 @@ class AddGame implements IListener
 					<label for="' . self::$title . '">Title :</label>
 					<input type="text" id="' . self::$title . '" name="' . self::$title . '" value="' . $this->getTitle() . '" />
 					<br>
-
-
-                    <br>
                     <input type="file" id="' . self::$gameFile . '" name="' . self::$gameFile . '"/> (swf/unity)</td>
+                    <br>
+                    <input type="file" id="' . self::$image . '" name="' . self::$image . '"/> (jpg/png/gif)</td>
                     <br>
 					<input type="submit" name="' . self::$addGame . '" value="Submit Game" />
 				</fieldset>
@@ -41,24 +41,25 @@ class AddGame implements IListener
     public function addingGame()
     {
 
-
         try{
-            $gameTitle = $this->getTitle();
+            $title = $this->getTitle();
             $gameFile = $this->getFileName();
+            $image = $this->getImage();
 
             if(!empty($this->message))
                 throw new \Exception();
 
             return new \model\Game(
-                $gameTitle,
-                $gameFile
+                $title,
+                $gameFile,
+                $image
             );
         } catch(\FileSizeException $e){
-            $this->message .= "Game file is to large";
+            $this->message .= "File is to large";
         } catch(\FileExtensionException $e){
             $this->message .= "This game type is not excepted";
         } catch(\Exception $e){
-            $this->message .= "Something wrong happen";
+           // $this->message .= "Something wrong happen";
         }
 
     }
@@ -88,6 +89,19 @@ class AddGame implements IListener
         }
         else{
             $this->message .= 'Game file needs to bee included<br>';
+        }
+    }
+
+    public function getImage()
+    {
+        if(!empty($_FILES[self::$image]["name"])){
+            if ($_FILES[self::$image]["size"] > 20000000) // File cant be greater than 20 mb
+                throw new \FileSizeException();
+
+            return $_FILES[self::$image];
+        }
+        else{
+            $this->message .= 'Image needs to bee included<br>';
         }
     }
 
@@ -122,7 +136,7 @@ class AddGame implements IListener
 
     public function errorListener($listener)
     {
-        $this->message = "sorry we couldn't add your game";
+        $this->message = "Sorry we couldn't add your game";
     }
 
 }

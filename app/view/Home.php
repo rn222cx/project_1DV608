@@ -18,19 +18,20 @@ class Home
     {
         $gameList = $this->gameList->getGames();
 
-        $ret = "<ul>";
-
+        $render = "<ul>";
         foreach ($gameList as $game) {
-
             $title = $game->getTitle();
+            $img = $game->getImage();
             $urlID = $game->getGameID();
             $url = $this->navigation->getGameURL($urlID);
 
-            $ret .= "<li><a href='".$url."/".$title."'>$title</a></li>";
+            $render .= '<li class="gameBox"><a href="'.$url.'/'.$title.'">
+                <h2 class="gameTitle">'. $title .'</h2>
+                <img class="gameImg" src="'. parse_ini_file('.env')['site'] .'/images/'. $img .'" title="play '. $title .'">
+            </a></li>';
         }
-        $ret .= "</ul>";
-
-        return "<h2>List of games</h2> $ret";
+        $render .= "</ul>";
+        return "<h2>List of games</h2> $render";
 
     }
 
@@ -43,8 +44,7 @@ class Home
         if ($game != null)
             return $game;
 
-        throw new \Exception("unknown game id");
-
+        throw new \Exception("unknown game");
     }
 
 

@@ -1,6 +1,5 @@
 <?php
-require_once '../app/controller/LoginController.php';
-require_once '../app/model/Game.php';
+
 
 class HomeController extends Controller
 {

@@ -55,9 +55,8 @@ class Login
 
     public function redirectToHomePage()
     {
-        $homePage = '/new';
-        //$homePage = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-        header("Location: $homePage");
+        $config = parse_ini_file('.env');
+        header("Location: " . $config['site']);
     }
 
     public function response()

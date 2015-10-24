@@ -98,9 +98,8 @@ class Register implements IListener
 
     public function redirectToHomePage()
     {
-        $homePage = '/new';
-        //$loginPage = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-        header("Location: $loginPage");
+        $config = parse_ini_file('.env');
+        header("Location: " . $config['site']);
     }
 
     /**
