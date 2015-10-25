@@ -13,11 +13,11 @@ class Layout
     public function render($output)
     {
 
-        echo '<!DOCTYPE html>
+      echo '<!DOCTYPE html>
       <html>
         <head>
           <meta charset="utf-8">
-          <link rel="stylesheet" href="/new/public/css/style.css">
+          <link rel="stylesheet" href="'.dirname($_SERVER['PHP_SELF']).'/css/style.css">
           <title>Login Example</title>
         </head>
         <body>

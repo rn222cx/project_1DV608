@@ -50,7 +50,7 @@ class Game
             throw new \FileExtensionException();
 
 
-        $this->title = trim($title);
+        $this->title = htmlspecialchars($title);
         $this->gameFile = $gameFile;
         $this->image = $image;
         $this->fileExtension = $fileExt;

@@ -98,8 +98,7 @@ class Register implements IListener
 
     public function redirectToHomePage()
     {
-        $config = parse_ini_file('.env');
-        header("Location: " . $config['site']);
+        header("Location: " . parse_ini_file('.env')['site']);
     }
 
     /**

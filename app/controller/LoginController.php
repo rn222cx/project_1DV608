@@ -16,7 +16,7 @@ class LoginController extends Controller
 
     public function doControl()
     {
-        if ($this->model->isLoggedIn()) {
+        if ($this->model->isLoggedIn() || $this->view->doCookieExist()) {
             if ($this->view->userWantsToLogout()) {
                 $this->model->logoutUser();
             }

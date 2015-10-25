@@ -6,6 +6,7 @@ require_once 'core/Route.php';
 
 require_once 'view/NavBar.php';
 require_once 'view/Layout.php';
+require_once 'view/CookieStorage.php';
 
 require_once 'dal/Db.php';
 require_once 'model/SessionStorage.php';

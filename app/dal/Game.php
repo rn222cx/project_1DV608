@@ -32,9 +32,11 @@ class Game
             $title = $credential->getTitle();
             $gameFile = $random . $credential->getGameFile()["name"];
             $imgFile = $random . $credential->getImage()["name"];
+
             $targetFile = $gameDirectory . $gameFile;
             $targetImg = $imgDirectory . $imgFile;
 
+            // Move img and game file to the given directory
             move_uploaded_file($credential->getGameFile()["tmp_name"], $targetFile);
             move_uploaded_file($credential->getImage()["tmp_name"], $targetImg);
 
@@ -51,11 +53,6 @@ class Game
         } catch (\Exception $e) {
             $listener->errorListener("AddGameDal::CouldNotAddGameException");
         }
-
-    }
-
-    public function addFiles()
-    {
 
     }
 

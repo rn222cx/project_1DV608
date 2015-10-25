@@ -20,6 +20,7 @@ class AddGame implements IListener
     public function render()
     {
         return '
+        <h2>Add Game</h2>
 			<form method="post" enctype="multipart/form-data">
 				<fieldset>
 					<legend>Add Game</legend>
@@ -57,9 +58,9 @@ class AddGame implements IListener
         } catch(\FileSizeException $e){
             $this->message .= "File is to large";
         } catch(\FileExtensionException $e){
-            $this->message .= "This game type is not excepted";
+            $this->message .= "This file type is not excepted";
         } catch(\Exception $e){
-           // $this->message .= "Something wrong happen";
+
         }
 
     }
@@ -95,7 +96,7 @@ class AddGame implements IListener
     public function getImage()
     {
         if(!empty($_FILES[self::$image]["name"])){
-            if ($_FILES[self::$image]["size"] > 20000000) // File cant be greater than 20 mb
+            if ($_FILES[self::$image]["size"] > 4000000) // File cant be greater than 4 mb
                 throw new \FileSizeException();
 
             return $_FILES[self::$image];
@@ -112,7 +113,7 @@ class AddGame implements IListener
 
     public function notLoggedIn()
     {
-        return 'Please login to add games';
+        return '<h2>Please login to add games</h2>';
     }
 
     public function addGameSuccess()

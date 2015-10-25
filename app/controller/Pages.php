@@ -4,6 +4,14 @@ class Pages
 {
     public function error404()
     {
-        return '<h1 class="error404">404</h1>';
+        return'
+        <div class="error404">
+            <object codebase="http://www.adobe.com/go/getflashplayer" width="100%" height="100%" align="middle">
+                <param name="quality" value="high" />
+                <param name="menu" value="true">
+                <embed width="100%" height="100%" src="'. parse_ini_file('.env')['site'] .'/games/pacman.swf" width="100%" height="100%" align="middle" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
+            </object>
+        </div>
+        ';
     }
 }
