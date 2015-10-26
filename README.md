@@ -2,6 +2,7 @@
 
 
 * [Sida för testkörning](http://45.55.147.164/game/)
+* [Demonstrations film](https://www.screenmailer.com/v/uGqagKnaoUCC9GU)
 
 GameTube är en spel application där du kan spela online spel samt ladda upp dina egna eller andras spel.
 Visionen med GameTube är att efterlikna en mini version av YouTube fast med online spel.
