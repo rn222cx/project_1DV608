@@ -22,9 +22,6 @@ class Route
                 case 'register':
                     $this->url = 'RegisterController/doControl';
                     break;
-                case 'home':
-                    $this->url = 'Home/ny';
-                    break;
                 case 'addgames':
                     $this->url = 'AddGameController/index';
                     break;
