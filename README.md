@@ -9,7 +9,7 @@ De filtyper som går att ladda upp och spela just nu är swf(flash) samt unity3d
 
 ## Installation
 Ladda ner zipfilen och packa upp. I public/.env filen ändrar du uppgifterna så de passa dig.
-Lägger du applikationen i en underkatalog måste sökvägen till denna redigeras i public/.htaccess
+Lägger du applikationen i en underkatalog måste sökvägen redigeras i public/.htaccess
 
 ![alt tag](http://www.judins.net/stamp-w3c.png)
 
