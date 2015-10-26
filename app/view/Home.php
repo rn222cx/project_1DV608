@@ -25,9 +25,12 @@ class Home
             $urlID = $game->getGameID();
             $url = $this->navigation->getGameURL($urlID);
 
-            $render .= '<li class="gameBox"><a href="'.$url.'/'.$title.'">
+            $render .= '<li class="gameBox"><a href="'. $url .'/'. str_replace(' ','-',$title) .'">
                 <h2 class="gameTitle">'. $title .'</h2>
-                <img class="gameImg" src="'. parse_ini_file('.env')['site'] .'/images/'. $img .'" title="play '. $title .'">
+                <img class="gameImg"
+                src="'. parse_ini_file('.env')['site'] .'/images/'. $img .'"
+                title="play '. $title .'"
+                alt="play '. $title .'">
             </a></li>';
         }
         $render .= "</ul>";
