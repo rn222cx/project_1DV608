@@ -15,7 +15,7 @@ class Game
     }
 
     /**
-     * Add new games to db
+     * Add new games to db and game catalog
      *
      * @param \model\Game $credential
      * @param \model\IListener $listener
@@ -24,7 +24,7 @@ class Game
     public function add(\model\Game $credential, \model\IListener $listener)
     {
         try {
-            $random = rand(0, pow(10, 5)) . '-'; // 5 digit random number to prefix game name
+            $random = rand(0, pow(10, 5)) . '-'; // 5 digit random number to prefix game and img name
             $gameDirectory = "../public/games/"; // path to game directory
             $imgDirectory = "../public/images/"; // path to image directory
 

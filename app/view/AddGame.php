@@ -83,9 +83,6 @@ class AddGame implements IListener
     public function getFileName()
     {
         if(!empty($_FILES[self::$gameFile]["name"])){
-            if ($_FILES[self::$gameFile]["size"] > 20000000) // File cant be greater than 20 mb
-                throw new \FileSizeException();
-
             return $_FILES[self::$gameFile];
         }
         else{
@@ -96,9 +93,6 @@ class AddGame implements IListener
     public function getImage()
     {
         if(!empty($_FILES[self::$image]["name"])){
-            if ($_FILES[self::$image]["size"] > 4000000) // File cant be greater than 4 mb
-                throw new \FileSizeException();
-
             return $_FILES[self::$image];
         }
         else{

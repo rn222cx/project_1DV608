@@ -28,7 +28,7 @@ class Home
             $render .= '<li class="gameBox"><a href="'. $url .'/'. str_replace(' ','-',$title) .'">
                 <h2 class="gameTitle">'. $title .'</h2>
                 <img class="gameImg"
-                src="'. parse_ini_file('.env')['site'] .'/images/'. $img .'"
+                src="'. dirname($_SERVER['PHP_SELF']) .'/images/'. $img .'"
                 title="play '. $title .'"
                 alt="play '. $title .'">
             </a></li>';
@@ -47,7 +47,7 @@ class Home
         if ($game != null)
             return $game;
 
-        throw new \Exception("unknown game");
+        throw new \Exception("unknown game id");
     }
 
 
