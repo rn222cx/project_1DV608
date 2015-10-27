@@ -1,7 +1,7 @@
 Options -MultiViews
 RewriteEngine On
 # Where routing starts, add directory path if required
-RewriteBase /public
+RewriteBase /game/public
 # Dont rewrite a gameFile name
 RewriteCond %{REQUEST_FILENAME} !-f
 # Dont rewrite a gameFile directory
