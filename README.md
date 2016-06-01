@@ -1,7 +1,6 @@
 # GameTube
 
 
-* [Sida för testkörning](http://45.55.147.164/game/)
 * [Wiki sida](https://github.com/rn222cx/project_1DV608/wiki)
 
 GameTube är en spel application där du kan spela online spel samt ladda upp dina egna eller andras spel.
